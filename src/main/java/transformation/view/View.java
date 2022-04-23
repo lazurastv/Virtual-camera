@@ -15,6 +15,7 @@ public class View extends JFrame {
         model = new Model();
         add(canvas);
         addKeyListener(new Controller(this, model));
+        setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
