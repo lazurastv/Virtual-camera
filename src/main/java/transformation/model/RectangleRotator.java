@@ -11,7 +11,7 @@ public abstract class RectangleRotator {
 
     public static void rotateCounterclockwise(Rectangle rectangle) {
         for (PointMatrix point : rectangle.vertices) {
-            MatrixOps.rotateY(point, -DEFAULT_ANGLE);
+            MatrixOps.rotateZ(point, -DEFAULT_ANGLE);
         }
     }
 

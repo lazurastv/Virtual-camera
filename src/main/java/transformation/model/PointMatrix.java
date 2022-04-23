@@ -10,7 +10,7 @@ public class PointMatrix extends SimpleMatrix {
                 new double[] { x },
                 new double[] { y },
                 new double[] { z },
-                new double[] { 1d },
+                new double[] { 1 },
         });
     }
 
