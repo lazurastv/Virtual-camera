@@ -1,5 +1,6 @@
 package transformation;
 
+import transformation.model.Model;
 import transformation.view.View;
 
 public class Main {
