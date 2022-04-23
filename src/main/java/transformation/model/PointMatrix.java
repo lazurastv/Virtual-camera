@@ -33,4 +33,9 @@ public class PointMatrix extends SimpleMatrix {
     public int getZ() {
         return (int) get(2, 0);
     }
+
+    @Override
+    public String toString() {
+        return "(" + getX() + ", " + getY() + ", " + getZ() + ")\n";
+    }
 }

@@ -68,4 +68,13 @@ public class Model {
     public void reset() {
         rectangle = ModelConsts.SINGLE_RECTANGLE;
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (PointMatrix point : rectangle.vertices) {
+            result += point.toString();
+        }
+        return result;
+    }
 }

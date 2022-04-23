@@ -75,6 +75,7 @@ public class Controller extends KeyAdapter {
             default:
                 System.out.println(KeyEvent.getKeyText(e.getExtendedKeyCode()) + " does nothing");
         }
+        System.out.println(model);
         view.repaint();
     }
 }
