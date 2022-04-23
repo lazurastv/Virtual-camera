@@ -12,7 +12,7 @@ public class Rectangle {
     private final int RIGHT_UP_FRONT = 6;
     private final int RIGHT_UP_BACK = 7;
 
-    private final PointMatrix[] vertices;
+    protected final PointMatrix[] vertices;
 
     public Rectangle(PointMatrix[] vertices) {
         this.vertices = vertices;

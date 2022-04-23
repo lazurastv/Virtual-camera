@@ -2,7 +2,7 @@ package transformation.model;
 
 public class Model {
     public final OriginMatrix origin;
-    public final Rectangle rectangle;
+    public Rectangle rectangle;
 
     public Model() {
         origin = new OriginMatrix();
@@ -42,30 +42,30 @@ public class Model {
     }
 
     public void rotateClockwise() {
-        RectangleRotator.rotateClockwise();
+        RectangleRotator.rotateClockwise(rectangle);
     }
 
     public void rotateCounterclockwise() {
-        RectangleRotator.rotateCounterclockwise();
+        RectangleRotator.rotateCounterclockwise(rectangle);
     }
 
     public void lookUp() {
-        RectangleRotator.lookUp();
+        RectangleRotator.lookUp(rectangle);
     }
 
     public void lookDown() {
-        RectangleRotator.lookDown();
+        RectangleRotator.lookDown(rectangle);
     }
 
     public void lookRight() {
-        RectangleRotator.lookRight();
+        RectangleRotator.lookRight(rectangle);
     }
 
     public void lookLeft() {
-        RectangleRotator.lookLeft();
+        RectangleRotator.lookLeft(rectangle);
     }
 
     public void reset() {
-        System.out.println("Reset view?");
+        rectangle = ModelConsts.SINGLE_RECTANGLE;
     }
 }

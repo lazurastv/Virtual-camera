@@ -1,29 +1,43 @@
 package transformation.model;
 
 public abstract class RectangleTranslator {
+    private static final double DEFAULT_SHIFT = 10;
+
     public static void moveForward(Rectangle rectangle) {
-        System.out.println("Move forward");
-        PointMatrix.DISTANCE_TO_VIEW *= 2;
+        PointMatrix.DISTANCE_TO_VIEW *= 1.1;
+        for (PointMatrix point : rectangle.vertices) {
+            MatrixOps.translate(point, 0, 0, DEFAULT_SHIFT);
+        }
     }
 
     public static void moveBackward(Rectangle rectangle) {
-        System.out.println("Move backward");
-        PointMatrix.DISTANCE_TO_VIEW /= 2;
+        PointMatrix.DISTANCE_TO_VIEW /= 1.1;
+        for (PointMatrix point : rectangle.vertices) {
+            MatrixOps.translate(point, 0, 0, -DEFAULT_SHIFT);
+        }
     }
 
     public static void moveLeft(Rectangle rectangle) {
-        System.out.println("Move left");
+        for (PointMatrix point : rectangle.vertices) {
+            MatrixOps.translate(point, -DEFAULT_SHIFT, 0, 0);
+        }
     }
 
     public static void moveRight(Rectangle rectangle) {
-        System.out.println("Move right");
+        for (PointMatrix point : rectangle.vertices) {
+            MatrixOps.translate(point, DEFAULT_SHIFT, 0, 0);
+        }
     }
 
     public static void moveUp(Rectangle rectangle) {
-        System.out.println("Move up");
+        for (PointMatrix point : rectangle.vertices) {
+            MatrixOps.translate(point, 0, -DEFAULT_SHIFT, 0);
+        }
     }
 
     public static void moveDown(Rectangle rectangle) {
-        System.out.println("Move down");
+        for (PointMatrix point : rectangle.vertices) {
+            MatrixOps.translate(point, 0, DEFAULT_SHIFT, 0);
+        }
     }
 }

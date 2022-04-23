@@ -3,7 +3,7 @@ package transformation.model;
 import org.ejml.simple.SimpleMatrix;
 
 public class PointMatrix extends SimpleMatrix {
-    public static double DISTANCE_TO_VIEW = 1.0;
+    public static double DISTANCE_TO_VIEW = 100;
 
     public PointMatrix(double x, double y, double z) {
         super(new double[][] {
