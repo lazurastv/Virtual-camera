@@ -53,6 +53,7 @@ public class Controller extends KeyAdapter {
                 model.lookUp();
                 break;
             case KeyEvent.VK_NUMPAD5:
+            case KeyEvent.VK_NUMPAD2:
                 model.lookDown();
                 break;
             case KeyEvent.VK_NUMPAD6:
@@ -62,11 +63,11 @@ public class Controller extends KeyAdapter {
                 model.lookLeft();
                 break;
             case KeyEvent.VK_NUMPAD9:
-            case KeyEvent.VK_NUMPAD1:
+            case KeyEvent.VK_NUMPAD3:
                 model.rotateClockwise();
                 break;
             case KeyEvent.VK_NUMPAD7:
-            case KeyEvent.VK_NUMPAD3:
+            case KeyEvent.VK_NUMPAD1:
                 model.rotateCounterclockwise();
                 break;
             default:
