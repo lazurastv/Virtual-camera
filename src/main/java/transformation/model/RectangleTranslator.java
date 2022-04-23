@@ -4,14 +4,12 @@ public abstract class RectangleTranslator {
     private static final double DEFAULT_SHIFT = 10;
 
     public static void moveForward(Rectangle rectangle) {
-        PointMatrix.DISTANCE_TO_VIEW *= 1.1;
         for (PointMatrix point : rectangle.vertices) {
             MatrixOps.translate(point, 0, 0, DEFAULT_SHIFT);
         }
     }
 
     public static void moveBackward(Rectangle rectangle) {
-        PointMatrix.DISTANCE_TO_VIEW /= 1.1;
         for (PointMatrix point : rectangle.vertices) {
             MatrixOps.translate(point, 0, 0, -DEFAULT_SHIFT);
         }
