@@ -52,7 +52,7 @@ public class Controller extends KeyAdapter {
             case KeyEvent.VK_NUMPAD8:
                 model.lookUp();
                 break;
-            case KeyEvent.VK_NUMPAD2:
+            case KeyEvent.VK_NUMPAD5:
                 model.lookDown();
                 break;
             case KeyEvent.VK_NUMPAD6:
@@ -68,9 +68,6 @@ public class Controller extends KeyAdapter {
             case KeyEvent.VK_NUMPAD7:
             case KeyEvent.VK_NUMPAD3:
                 model.rotateCounterclockwise();
-                break;
-            case KeyEvent.VK_NUMPAD5:
-                model.reset();
                 break;
             default:
                 System.out.println(KeyEvent.getKeyText(e.getExtendedKeyCode()) + " does nothing");

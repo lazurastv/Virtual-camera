@@ -21,7 +21,7 @@ public class Rectangle {
     private void connectVertices(int firstIndex, int secondIndex, Graphics g) {
         PointMatrix first = vertices[firstIndex];
         PointMatrix second = vertices[secondIndex];
-        g.drawLine(first.projectX(), first.projectY(), second.projectX(), second.projectY());
+        g.drawLine(first.projectX() + 250, first.projectY() + 250, second.projectX() + 250, second.projectY() + 250);
         System.out.println(first.projectX() + " " + first.projectY());
     }
 

@@ -1,3 +1,8 @@
 - make the window resizable, so the view can be of any dimension
 - add controls for letters only
 - copy from consts instead of taking directly so we can reset it
+
+- perspective is centered at 0,0 but should be centered at 250,250
+- i fixed it, but now the objects dont quite spawn where id expect. I could adjust them but it could be evidence of some other error
+Notice how the frame is never taking into account its size
+- perspective on rotation is focused at center presumably, which results in weird sizing
