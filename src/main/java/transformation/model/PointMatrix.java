@@ -2,11 +2,9 @@ package transformation.model;
 
 import org.ejml.simple.SimpleMatrix;
 
-public class Matrix {
-    private final SimpleMatrix matrix;
-
-    public Matrix(double x, double y, double z) {
-        matrix = new SimpleMatrix(new double[][] {
+public class PointMatrix extends SimpleMatrix {
+    public PointMatrix(double x, double y, double z) {
+        super(new double[][] {
                 new double[] { x },
                 new double[] { y },
                 new double[] { z },
@@ -15,10 +13,10 @@ public class Matrix {
     }
 
     public int getX() {
-        return (int) matrix.get(0, 0);
+        return (int) get(0, 0);
     }
 
     public int getY() {
-        return (int) matrix.get(1, 0);
+        return (int) get(1, 0);
     }
 }
