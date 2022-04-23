@@ -34,11 +34,11 @@ public class Model {
     }
 
     public void zoomIn() {
-        RectangleScaler.zoomIn(rectangle);
+        PointMatrix.DISTANCE_TO_VIEW *= 1.1;
     }
 
     public void zoomOut() {
-        RectangleScaler.zoomOut(rectangle);
+        PointMatrix.DISTANCE_TO_VIEW /= 1.1;
     }
 
     public void rotateClockwise() {

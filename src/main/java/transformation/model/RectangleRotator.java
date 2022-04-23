@@ -1,7 +1,7 @@
 package transformation.model;
 
 public abstract class RectangleRotator {
-    private static final double DEFAULT_ANGLE = Math.PI / 18;
+    private static final double DEFAULT_ANGLE = Math.PI / 180;
 
     public static void rotateClockwise(Rectangle rectangle) {
         for (PointMatrix point : rectangle.vertices) {
