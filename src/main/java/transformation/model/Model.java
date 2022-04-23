@@ -2,35 +2,47 @@ package transformation.model;
 
 public class Model {
     public final OriginMatrix origin;
-    public Rectangle rectangle;
+    public Rectangle[] rectangles;
 
     public Model() {
         origin = new OriginMatrix();
-        rectangle = ModelConsts.SINGLE_RECTANGLE;
+        rectangles = ModelConsts.DEFAULT_VIEW;
     }
 
     public void moveForward() {
-        RectangleTranslator.moveForward(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleTranslator.moveForward(rectangle);
+        }
     }
 
     public void moveBackward() {
-        RectangleTranslator.moveBackward(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleTranslator.moveBackward(rectangle);
+        }
     }
 
     public void moveLeft() {
-        RectangleTranslator.moveLeft(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleTranslator.moveLeft(rectangle);
+        }
     }
 
     public void moveRight() {
-        RectangleTranslator.moveRight(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleTranslator.moveRight(rectangle);
+        }
     }
 
     public void moveUp() {
-        RectangleTranslator.moveUp(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleTranslator.moveUp(rectangle);
+        }
     }
 
     public void moveDown() {
-        RectangleTranslator.moveDown(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleTranslator.moveDown(rectangle);
+        }
     }
 
     public void zoomIn() {
@@ -42,34 +54,48 @@ public class Model {
     }
 
     public void rotateClockwise() {
-        RectangleRotator.rotateClockwise(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleRotator.rotateClockwise(rectangle);
+        }
     }
 
     public void rotateCounterclockwise() {
-        RectangleRotator.rotateCounterclockwise(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleRotator.rotateCounterclockwise(rectangle);
+        }
     }
 
     public void lookUp() {
-        RectangleRotator.lookUp(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleRotator.lookUp(rectangle);
+        }
     }
 
     public void lookDown() {
-        RectangleRotator.lookDown(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleRotator.lookDown(rectangle);
+        }
     }
 
     public void lookRight() {
-        RectangleRotator.lookRight(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleRotator.lookRight(rectangle);
+        }
     }
 
     public void lookLeft() {
-        RectangleRotator.lookLeft(rectangle);
+        for (Rectangle rectangle : rectangles) {
+            RectangleRotator.lookLeft(rectangle);
+        }
     }
 
     @Override
     public String toString() {
         String result = "";
-        for (PointMatrix point : rectangle.vertices) {
-            result += point.toString();
+        for (Rectangle rectangle : rectangles) {
+            for (PointMatrix point : rectangle.vertices) {
+                result += point.toString();
+            }
         }
         return result;
     }

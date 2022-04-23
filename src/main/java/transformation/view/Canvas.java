@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Dimension;
 
 import transformation.model.Model;
+import transformation.model.Rectangle;
 
 public class Canvas extends JComponent {
     private final int WIDTH = 500;
@@ -25,6 +26,8 @@ public class Canvas extends JComponent {
         super.paintComponent(g);
 
         g.clearRect(0, 0, WIDTH, HEIGHT);
-        model.rectangle.draw(g);
+        for (Rectangle rectangle : model.rectangles) {
+            rectangle.draw(g);
+        }
     }
 }
