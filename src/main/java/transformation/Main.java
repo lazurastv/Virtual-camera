@@ -1,5 +1,7 @@
 package transformation;
 
+import transformation.view.View;
+
 public class Main {
     public final Model model;
     public final View view;
