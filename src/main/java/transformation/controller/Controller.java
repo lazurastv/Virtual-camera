@@ -1,68 +1,80 @@
 package transformation.controller;
 
 import java.awt.event.KeyEvent;
+
+import transformation.model.Model;
+import transformation.view.View;
+
 import java.awt.event.KeyAdapter;
 
 public class Controller extends KeyAdapter {
+    private final View view;
+    private final Model model;
+
+    public Controller(View view, Model model) {
+        this.view = view;
+        this.model = model;
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getExtendedKeyCode()) {
             case KeyEvent.VK_W:
             case KeyEvent.VK_UP:
-                System.out.println("Move forward");
+                model.moveForward();
                 break;
             case KeyEvent.VK_S:
             case KeyEvent.VK_DOWN:
-                System.out.println("Move backward");
+                model.moveBackward();
                 break;
             case KeyEvent.VK_A:
             case KeyEvent.VK_LEFT:
-                System.out.println("Move left");
+                model.moveLeft();
                 break;
             case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
-                System.out.println("Move right");
+                model.moveRight();
                 break;
             case KeyEvent.VK_SPACE:
-                System.out.println("Move up");
+                model.moveUp();
                 break;
             case KeyEvent.VK_SHIFT:
-                System.out.println("Move down");
+                model.moveDown();
                 break;
             case KeyEvent.VK_PLUS:
             case KeyEvent.VK_ADD:
-                System.out.println("Zoom in");
+                model.zoomIn();
                 break;
             case KeyEvent.VK_MINUS:
             case KeyEvent.VK_SUBTRACT:
-                System.out.println("Zoom out");
+                model.zoomOut();
                 break;
             case KeyEvent.VK_NUMPAD8:
-                System.out.println("Rotate backward (Look up)");
+                model.lookUp();
                 break;
             case KeyEvent.VK_NUMPAD2:
-                System.out.println("Rotate forward (Look down)");
+                model.lookDown();
                 break;
             case KeyEvent.VK_NUMPAD6:
-                System.out.println("Rotate right (Look right)");
+                model.lookRight();
                 break;
             case KeyEvent.VK_NUMPAD4:
-                System.out.println("Rotate left (Look left)");
+                model.lookLeft();
                 break;
             case KeyEvent.VK_NUMPAD9:
             case KeyEvent.VK_NUMPAD1:
-                System.out.println("Rotate clockwise");
+                model.rotateClockwise();
                 break;
             case KeyEvent.VK_NUMPAD7:
             case KeyEvent.VK_NUMPAD3:
-                System.out.println("Rotate counterclockwise");
+                model.rotateCounterclockwise();
                 break;
             case KeyEvent.VK_NUMPAD5:
-                System.out.println("Reset view?");
+                model.reset();
                 break;
             default:
                 System.out.println("Do nothing " + e.getExtendedKeyCode());
         }
+        view.repaint();
     }
 }
