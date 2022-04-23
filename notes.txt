@@ -1,0 +1,1 @@
+- make the window resizable, so the view can be of any dimension
