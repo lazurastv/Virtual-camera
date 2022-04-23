@@ -2,30 +2,40 @@ package transformation.model;
 
 public class Model {
     public final OriginMatrix origin;
-    public final PointMatrix p1;
-    public final PointMatrix p2;
-    public final PointMatrix p3;
+    public final Rectangle rectangle;
 
     public Model() {
         origin = new OriginMatrix();
-        p1 = new PointMatrix(300, 499, 499);
-        p2 = new PointMatrix(200, 200, 200);
-        p3 = new PointMatrix(400, 100, 300);
+        PointMatrix[] vertices = new PointMatrix[] {
+                new PointMatrix(100, 100, 100),
+                new PointMatrix(100, 100, 400),
+                new PointMatrix(100, 400, 100),
+                new PointMatrix(100, 400, 400),
+                new PointMatrix(400, 100, 100),
+                new PointMatrix(400, 100, 400),
+                new PointMatrix(400, 400, 100),
+                new PointMatrix(400, 400, 400),
+        };
+        rectangle = new Rectangle(vertices);
     }
 
     public void moveForward() {
+        PointMatrix.DISTANCE_TO_VIEW *= 2;
         System.out.println("Move forward");
     }
 
     public void moveBackward() {
+        PointMatrix.DISTANCE_TO_VIEW /= 2;
         System.out.println("Move backward");
     }
 
     public void moveLeft() {
+        PointMatrix.DISTANCE_TO_VIEW *= 1.1;
         System.out.println("Move left");
     }
 
     public void moveRight() {
+        PointMatrix.DISTANCE_TO_VIEW /= 1.1;
         System.out.println("Move right");
     }
 

@@ -25,8 +25,6 @@ public class Canvas extends JComponent {
         super.paintComponent(g);
 
         g.clearRect(0, 0, WIDTH, HEIGHT);
-        g.drawLine(model.p1.projectX(), model.p1.projectY(), model.p2.projectX(), model.p2.projectY());
-        g.drawLine(model.p1.projectX(), model.p1.projectY(), model.p3.projectX(), model.p3.projectY());
-        g.drawLine(model.p2.projectX(), model.p2.projectY(), model.p3.projectX(), model.p3.projectY());
+        model.rectangle.draw(g);
     }
 }
