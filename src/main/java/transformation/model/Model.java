@@ -10,63 +10,59 @@ public class Model {
     }
 
     public void moveForward() {
-        PointMatrix.DISTANCE_TO_VIEW *= 2;
-        System.out.println("Move forward");
+        RectangleTranslator.moveForward(rectangle);
     }
 
     public void moveBackward() {
-        PointMatrix.DISTANCE_TO_VIEW /= 2;
-        System.out.println("Move backward");
+        RectangleTranslator.moveBackward(rectangle);
     }
 
     public void moveLeft() {
-        PointMatrix.DISTANCE_TO_VIEW *= 1.1;
-        System.out.println("Move left");
+        RectangleTranslator.moveLeft(rectangle);
     }
 
     public void moveRight() {
-        PointMatrix.DISTANCE_TO_VIEW /= 1.1;
-        System.out.println("Move right");
+        RectangleTranslator.moveRight(rectangle);
     }
 
     public void moveUp() {
-        System.out.println("Move up");
+        RectangleTranslator.moveUp(rectangle);
     }
 
     public void moveDown() {
-        System.out.println("Move down");
+        RectangleTranslator.moveDown(rectangle);
     }
 
     public void zoomIn() {
-        System.out.println("Zoom in");
+        RectangleScaler.zoomIn(rectangle);
     }
 
     public void zoomOut() {
-        System.out.println("Zoom out");
+        RectangleScaler.zoomOut(rectangle);
     }
 
     public void rotateClockwise() {
-        System.out.println("Rotate clockwise");
+        RectangleRotator.rotateClockwise();
     }
 
     public void rotateCounterclockwise() {
-        System.out.println("Rotate counterclockwise");
+        RectangleRotator.rotateCounterclockwise();
     }
 
     public void lookUp() {
-        System.out.println("Rotate backward (Look up)");
+        RectangleRotator.lookUp();
     }
 
     public void lookDown() {
-        System.out.println("Rotate forward (Look down)");
+        RectangleRotator.lookDown();
     }
 
     public void lookRight() {
-        System.out.println("Rotate right (Look right)");
+        RectangleRotator.lookRight();
     }
 
     public void lookLeft() {
-        System.out.println("Rotate left (Look left)");
+        RectangleRotator.lookLeft();
     }
 
     public void reset() {
