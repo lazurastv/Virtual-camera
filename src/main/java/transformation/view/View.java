@@ -6,6 +6,7 @@ public class View extends JFrame {
     private final Canvas canvas;
 
     public View() {
+        super("Wirtualna kamera");
         canvas = new Canvas();
         add(canvas);
         setLocationRelativeTo(null);
