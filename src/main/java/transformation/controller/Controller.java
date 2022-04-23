@@ -73,7 +73,7 @@ public class Controller extends KeyAdapter {
                 model.reset();
                 break;
             default:
-                System.out.println("Do nothing " + e.getExtendedKeyCode());
+                System.out.println(KeyEvent.getKeyText(e.getExtendedKeyCode()) + " does nothing");
         }
         view.repaint();
     }
