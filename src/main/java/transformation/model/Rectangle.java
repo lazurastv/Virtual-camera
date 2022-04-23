@@ -22,6 +22,7 @@ public class Rectangle {
         PointMatrix first = vertices[firstIndex];
         PointMatrix second = vertices[secondIndex];
         g.drawLine(first.projectX(), first.projectY(), second.projectX(), second.projectY());
+        System.out.println(first.projectX() + " " + first.projectY());
     }
 
     public void draw(Graphics g) {

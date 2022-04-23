@@ -15,11 +15,15 @@ public class PointMatrix extends SimpleMatrix {
     }
 
     public int projectX() {
-        return (int) (DISTANCE_TO_VIEW * getX() / getZ());
+        int x = (int) (DISTANCE_TO_VIEW * getX());
+        int z = getZ();
+        return z > 0 ? x / z : x;
     }
 
     public int projectY() {
-        return (int) (DISTANCE_TO_VIEW * getY() / getZ());
+        int y = (int) (DISTANCE_TO_VIEW * getY());
+        int z = getZ();
+        return z > 0 ? y / z : y;
     }
 
     public int getX() {
