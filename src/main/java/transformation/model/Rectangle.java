@@ -68,7 +68,7 @@ public class Rectangle {
     public String toString() {
         String result = "";
         for (PointMatrix point : vertices) {
-            result += point;
+            result += point + "\n";
         }
         return result;
     }

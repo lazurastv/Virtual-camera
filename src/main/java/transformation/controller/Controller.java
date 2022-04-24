@@ -2,9 +2,9 @@ package transformation.controller;
 
 import java.awt.event.KeyEvent;
 
-import transformation.model.Camera.Camera;
-import transformation.model.Camera.CameraOps;
-import transformation.model.Camera.ProjectionOps;
+import transformation.model.camera.Camera;
+import transformation.model.camera.CameraOps;
+import transformation.model.camera.ProjectionOps;
 import transformation.view.View;
 
 import java.awt.event.KeyAdapter;

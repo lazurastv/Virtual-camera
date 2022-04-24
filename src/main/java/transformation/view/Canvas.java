@@ -1,10 +1,11 @@
 package transformation.view;
 
 import javax.swing.JComponent;
+
+import transformation.model.camera.Camera;
+
 import java.awt.Graphics;
 import java.awt.Dimension;
-
-import transformation.model.Camera.Camera;
 
 public class Canvas extends JComponent {
     private final int WIDTH = 500;

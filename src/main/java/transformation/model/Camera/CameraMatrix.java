@@ -1,4 +1,4 @@
-package transformation.model.Camera;
+package transformation.model.camera;
 
 import org.ejml.simple.SimpleMatrix;
 

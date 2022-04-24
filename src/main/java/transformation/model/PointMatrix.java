@@ -46,6 +46,6 @@ public class PointMatrix extends SimpleMatrix {
 
     @Override
     public String toString() {
-        return "(" + getX() + ", " + getY() + ", " + getZ() + ", " + getF() + ")\n";
+        return "(" + getX() + ", " + getY() + ", " + getZ() + ", " + getF() + ")";
     }
 }

@@ -3,7 +3,7 @@ package transformation.view;
 import javax.swing.JFrame;
 
 import transformation.controller.Controller;
-import transformation.model.Camera.Camera;
+import transformation.model.camera.Camera;
 
 public class View extends JFrame {
     public View() {
