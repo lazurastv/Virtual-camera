@@ -6,15 +6,15 @@ import transformation.controller.Controller;
 import transformation.model.Model;
 
 public class View extends JFrame {
-    private final Canvas canvas;
-    private final Model model;
-
     public View() {
         super("Wirtualna kamera");
-        canvas = new Canvas();
-        model = new Model();
+
+        Model model = new Model();
+        Canvas canvas = new Canvas(model);
+        Controller controller = new Controller(this, model);
+
         add(canvas);
-        addKeyListener(new Controller(this, model));
+        addKeyListener(controller);
         pack();
         setResizable(false);
         setLocationRelativeTo(null);

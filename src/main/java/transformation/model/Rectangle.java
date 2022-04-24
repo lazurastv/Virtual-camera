@@ -2,6 +2,8 @@ package transformation.model;
 
 import java.awt.Graphics;
 
+import org.ejml.simple.SimpleMatrix;
+
 public class Rectangle {
     private final int LEFT_DOWN_FRONT = 0;
     private final int LEFT_DOWN_BACK = 1;
@@ -12,17 +14,32 @@ public class Rectangle {
     private final int RIGHT_UP_FRONT = 6;
     private final int RIGHT_UP_BACK = 7;
 
-    protected final PointMatrix[] vertices;
+    private final PointMatrix[] vertices;
 
     public Rectangle(PointMatrix[] vertices) {
         this.vertices = vertices;
+    }
+
+    public Rectangle(Rectangle rectangle) {
+        vertices = new PointMatrix[8];
+        for (int i = 0; i < 8; i++) {
+            PointMatrix vertex = rectangle.vertices[i];
+            vertex.normalize();
+            vertices[i] = new PointMatrix(vertex.getX(), vertex.getY(), vertex.getZ());
+        }
     }
 
     private void connectVertices(int firstIndex, int secondIndex, Graphics g) {
         PointMatrix first = vertices[firstIndex];
         PointMatrix second = vertices[secondIndex];
         g.drawLine(first.projectX() + 250, first.projectY() + 250, second.projectX() + 250, second.projectY() + 250);
-        System.out.println(first.projectX() + " " + first.projectY());
+    }
+
+    public void transform(SimpleMatrix matrix) {
+        for (PointMatrix point : vertices) {
+            point.set(matrix.mult(point));
+            point.normalize();
+        }
     }
 
     public void draw(Graphics g) {
@@ -45,5 +62,14 @@ public class Rectangle {
         connectVertices(RIGHT_UP_FRONT, RIGHT_UP_BACK, g);
         connectVertices(RIGHT_UP_FRONT, RIGHT_DOWN_FRONT, g);
         connectVertices(RIGHT_UP_FRONT, LEFT_UP_FRONT, g);
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (PointMatrix point : vertices) {
+            result += point;
+        }
+        return result;
     }
 }
