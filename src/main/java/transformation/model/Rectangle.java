@@ -16,8 +16,16 @@ public class Rectangle {
 
     private final PointMatrix[] vertices;
 
-    public Rectangle(PointMatrix[] vertices) {
-        this.vertices = vertices;
+    public Rectangle(double leftX, double downY, double frontZ, double rightX, double upY, double backZ) {
+        vertices = new PointMatrix[8];
+        vertices[LEFT_DOWN_BACK] = new PointMatrix(leftX, downY, backZ);
+        vertices[LEFT_DOWN_FRONT] = new PointMatrix(leftX, downY, frontZ);
+        vertices[LEFT_UP_BACK] = new PointMatrix(leftX, upY, backZ);
+        vertices[LEFT_UP_FRONT] = new PointMatrix(leftX, upY, frontZ);
+        vertices[RIGHT_DOWN_BACK] = new PointMatrix(rightX, downY, backZ);
+        vertices[RIGHT_DOWN_FRONT] = new PointMatrix(rightX, downY, frontZ);
+        vertices[RIGHT_UP_BACK] = new PointMatrix(rightX, upY, backZ);
+        vertices[RIGHT_UP_FRONT] = new PointMatrix(rightX, upY, frontZ);
     }
 
     public Rectangle(Rectangle rectangle) {
