@@ -3,17 +3,18 @@ package transformation.model.Camera;
 import org.ejml.simple.SimpleMatrix;
 
 import transformation.model.Rectangle;
+import transformation.model.Scene;
+
+import java.awt.Graphics;
 
 public class Camera {
     private final CameraMatrix cameraMatrix;
-    private final ViewMatrix viewMatrix;
     private final ProjectionMatrix projectionMatrix;
 
     private SimpleMatrix transformMatrix;
 
     public Camera() {
         cameraMatrix = new CameraMatrix();
-        viewMatrix = new ViewMatrix();
         projectionMatrix = new ProjectionMatrix();
         updateTransformMatrix();
     }
@@ -21,7 +22,6 @@ public class Camera {
     private void updateTransformMatrix() {
         transformMatrix = SimpleMatrix.identity(4);
         transformMatrix = cameraMatrix.mult(transformMatrix);
-        transformMatrix = viewMatrix.mult(transformMatrix);
         transformMatrix = projectionMatrix.mult(transformMatrix);
     }
 
@@ -35,15 +35,20 @@ public class Camera {
         updateTransformMatrix();
     }
 
-    public Rectangle project(Rectangle rectangle) {
+    private Rectangle project(Rectangle rectangle) {
         Rectangle result = new Rectangle(rectangle);
         result.transform(transformMatrix);
         return result;
     }
 
+    public void draw(Graphics g) {
+        for (Rectangle rectangle : Scene.DEFAULT_VIEW) {
+            project(rectangle).draw(g);
+        }
+    }
+
     public void reset() {
         cameraMatrix.reset();
-        viewMatrix.reset();
         projectionMatrix.reset();
         updateTransformMatrix();
     }

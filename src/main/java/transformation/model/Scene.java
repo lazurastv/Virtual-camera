@@ -1,6 +1,6 @@
 package transformation.model;
 
-public abstract class ModelConsts {
+public abstract class Scene {
         public static final Rectangle RIGHT_FRONT_HOUSE = new Rectangle(new PointMatrix[] {
                         new PointMatrix(200, 100, 400),
                         new PointMatrix(200, 100, 800),

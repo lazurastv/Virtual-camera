@@ -2,7 +2,7 @@ package transformation.controller;
 
 import java.awt.event.KeyEvent;
 
-import transformation.model.Model;
+import transformation.model.Camera.Camera;
 import transformation.model.Camera.CameraOps;
 import transformation.model.Camera.ProjectionOps;
 import transformation.view.View;
@@ -11,11 +11,11 @@ import java.awt.event.KeyAdapter;
 
 public class Controller extends KeyAdapter {
     private final View view;
-    private final Model model;
+    private final Camera camera;
 
-    public Controller(View view, Model model) {
+    public Controller(View view, Camera camera) {
         this.view = view;
-        this.model = model;
+        this.camera = camera;
     }
 
     @Override
@@ -23,57 +23,57 @@ public class Controller extends KeyAdapter {
         switch (e.getExtendedKeyCode()) {
             case KeyEvent.VK_W:
             case KeyEvent.VK_UP:
-                model.tranformCamera(CameraOps.MoveForward);
+                camera.transformCamera(CameraOps.MoveForward);
                 break;
             case KeyEvent.VK_S:
             case KeyEvent.VK_DOWN:
-                model.tranformCamera(CameraOps.MoveBackward);
+                camera.transformCamera(CameraOps.MoveBackward);
                 break;
             case KeyEvent.VK_A:
             case KeyEvent.VK_LEFT:
-                model.tranformCamera(CameraOps.MoveLeft);
+                camera.transformCamera(CameraOps.MoveLeft);
                 break;
             case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
-                model.tranformCamera(CameraOps.MoveRight);
+                camera.transformCamera(CameraOps.MoveRight);
                 break;
             case KeyEvent.VK_SPACE:
-                model.tranformCamera(CameraOps.MoveUp);
+                camera.transformCamera(CameraOps.MoveUp);
                 break;
             case KeyEvent.VK_SHIFT:
-                model.tranformCamera(CameraOps.MoveDown);
+                camera.transformCamera(CameraOps.MoveDown);
                 break;
             case KeyEvent.VK_PLUS:
             case KeyEvent.VK_ADD:
-                model.transformProjection(ProjectionOps.ZoomIn);
+                camera.transformProjection(ProjectionOps.ZoomIn);
                 break;
             case KeyEvent.VK_MINUS:
             case KeyEvent.VK_SUBTRACT:
-                model.transformProjection(ProjectionOps.ZoomOut);
+                camera.transformProjection(ProjectionOps.ZoomOut);
                 break;
             case KeyEvent.VK_NUMPAD8:
-                model.tranformCamera(CameraOps.LookUp);
+                camera.transformCamera(CameraOps.LookUp);
                 break;
             case KeyEvent.VK_NUMPAD5:
             case KeyEvent.VK_NUMPAD2:
-                model.tranformCamera(CameraOps.LookDown);
+                camera.transformCamera(CameraOps.LookDown);
                 break;
             case KeyEvent.VK_NUMPAD6:
-                model.tranformCamera(CameraOps.LookRight);
+                camera.transformCamera(CameraOps.LookRight);
                 break;
             case KeyEvent.VK_NUMPAD4:
-                model.tranformCamera(CameraOps.LookLeft);
+                camera.transformCamera(CameraOps.LookLeft);
                 break;
             case KeyEvent.VK_NUMPAD9:
             case KeyEvent.VK_NUMPAD3:
-                model.tranformCamera(CameraOps.RotateClockwise);
+                camera.transformCamera(CameraOps.RotateClockwise);
                 break;
             case KeyEvent.VK_NUMPAD7:
             case KeyEvent.VK_NUMPAD1:
-                model.tranformCamera(CameraOps.RotateCounterclockwise);
+                camera.transformCamera(CameraOps.RotateCounterclockwise);
                 break;
             case KeyEvent.VK_BACK_SPACE:
-                model.reset();
+                camera.reset();
                 break;
             default:
                 System.out.println(KeyEvent.getKeyText(e.getExtendedKeyCode()) + " does nothing");

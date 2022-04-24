@@ -4,16 +4,16 @@ import javax.swing.JComponent;
 import java.awt.Graphics;
 import java.awt.Dimension;
 
-import transformation.model.Model;
+import transformation.model.Camera.Camera;
 
 public class Canvas extends JComponent {
     private final int WIDTH = 500;
     private final int HEIGHT = 500;
 
-    private final Model model;
+    private final Camera camera;
 
-    public Canvas(Model model) {
-        this.model = model;
+    public Canvas(Camera camera) {
+        this.camera = camera;
     }
 
     public Dimension getPreferredSize() {
@@ -25,6 +25,6 @@ public class Canvas extends JComponent {
         super.paintComponent(g);
 
         g.clearRect(0, 0, WIDTH, HEIGHT);
-        model.draw(g);
+        camera.draw(g);
     }
 }
