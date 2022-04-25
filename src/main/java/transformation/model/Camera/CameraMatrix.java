@@ -51,15 +51,6 @@ public class CameraMatrix extends SimpleMatrix {
         }
     }
 
-    private SimpleMatrix getScalingMatrix(double x, double y, double z) {
-        return new SimpleMatrix(new double[][] {
-                new double[] { x, 0, 0, 0 },
-                new double[] { 0, y, 0, 0 },
-                new double[] { 0, 0, z, 0 },
-                new double[] { 0, 0, 0, 1 },
-        });
-    }
-
     private void translate(double x, double y, double z) {
         set(getTranslationMatrx(x, y, z).mult(this));
     }
@@ -74,10 +65,6 @@ public class CameraMatrix extends SimpleMatrix {
 
     private void rotateZ(double angle) {
         set(getRotationMatrix(angle, RotationAxis.Z).mult(this));
-    }
-
-    private void scale(double x, double y, double z) {
-        set(getScalingMatrix(x, y, z).mult(this));
     }
 
     public void transform(CameraOps operation) {
