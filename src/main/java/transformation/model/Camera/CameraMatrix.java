@@ -122,8 +122,4 @@ public class CameraMatrix extends SimpleMatrix {
                 break;
         }
     }
-
-    public void reset() {
-        set(SimpleMatrix.identity(4));
-    }
 }

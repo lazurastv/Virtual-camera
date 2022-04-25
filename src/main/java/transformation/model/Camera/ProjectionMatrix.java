@@ -28,10 +28,4 @@ public class ProjectionMatrix extends SimpleMatrix {
                 break;
         }
     }
-
-    public void reset() {
-        set(SimpleMatrix.identity(4));
-        set(3, 3, 0);
-        set(3, 2, 1 / DEFAULT_FOCAL_LENGTH);
-    }
 }

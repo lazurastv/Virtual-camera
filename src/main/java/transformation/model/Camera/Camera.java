@@ -8,15 +8,13 @@ import transformation.model.Scene;
 import java.awt.Graphics;
 
 public class Camera {
-    private final CameraMatrix cameraMatrix;
-    private final ProjectionMatrix projectionMatrix;
+    private CameraMatrix cameraMatrix;
+    private ProjectionMatrix projectionMatrix;
 
     private SimpleMatrix transformMatrix;
 
     public Camera() {
-        cameraMatrix = new CameraMatrix();
-        projectionMatrix = new ProjectionMatrix();
-        updateTransformMatrix();
+        reset();
     }
 
     private void updateTransformMatrix() {
@@ -48,8 +46,8 @@ public class Camera {
     }
 
     public void reset() {
-        cameraMatrix.reset();
-        projectionMatrix.reset();
+        cameraMatrix = new CameraMatrix();
+        projectionMatrix = new ProjectionMatrix();
         updateTransformMatrix();
     }
 }
