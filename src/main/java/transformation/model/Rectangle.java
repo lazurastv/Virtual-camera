@@ -40,7 +40,11 @@ public class Rectangle {
     private void connectVertices(int firstIndex, int secondIndex, Graphics g) {
         PointMatrix first = vertices[firstIndex];
         PointMatrix second = vertices[secondIndex];
-        g.drawLine(first.projectX() + 250, first.projectY() + 250, second.projectX() + 250, second.projectY() + 250);
+
+        if (first.getZ() > 0 || second.getZ() > 0) {
+            g.drawLine(first.projectX() + 250, first.projectY() + 250,
+                    second.projectX() + 250, second.projectY() + 250);
+        }
     }
 
     public void transform(SimpleMatrix matrix) {
