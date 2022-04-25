@@ -37,7 +37,7 @@ public class PointMatrix extends SimpleMatrix {
     }
 
     public void normalize() {
-        if (getF() >= 1) {
+        if (getZ() > 0) {
             for (int i = 0; i < 4; i++) {
                 set(i, 0, get(i, 0) / getF());
             }
