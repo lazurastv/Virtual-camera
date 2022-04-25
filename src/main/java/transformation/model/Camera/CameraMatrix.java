@@ -3,8 +3,8 @@ package transformation.model.camera;
 import org.ejml.simple.SimpleMatrix;
 
 public class CameraMatrix extends SimpleMatrix {
-    private static final double DEFAULT_SHIFT = 20;
-    private static final double DEFAULT_ANGLE = Math.PI / 180;
+    private static final double DEFAULT_SHIFT = 100;
+    private static final double DEFAULT_ANGLE = Math.PI / 30;
 
     private enum RotationAxis {
         X, Y, Z
