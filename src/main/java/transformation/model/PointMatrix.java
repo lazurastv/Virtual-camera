@@ -32,20 +32,18 @@ public class PointMatrix extends SimpleMatrix {
         return get(2, 0);
     }
 
-    public double getF() {
+    private double getW() {
         return get(3, 0);
     }
 
-    public void normalize() {
-        if (getZ() > 0) {
-            for (int i = 0; i < 4; i++) {
-                set(i, 0, get(i, 0) / getF());
-            }
-        }
+    public PointMatrix transform(SimpleMatrix matrix) {
+        PointMatrix result = new PointMatrix(0, 0, 0);
+        result.set(matrix.mult(this));
+        result.normalize();
+        return result;
     }
 
-    @Override
-    public String toString() {
-        return "(" + getX() + ", " + getY() + ", " + getZ() + ", " + getF() + ")";
+    public void normalize() {
+        set(divide(getW()));
     }
 }

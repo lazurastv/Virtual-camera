@@ -4,6 +4,8 @@ import java.awt.Graphics;
 
 import org.ejml.simple.SimpleMatrix;
 
+import transformation.model.camera.ProjectionMatrix;
+
 public class Rectangle {
     private final int LEFT_DOWN_FRONT = 0;
     private final int LEFT_DOWN_BACK = 1;
@@ -37,51 +39,56 @@ public class Rectangle {
         }
     }
 
-    private void connectVertices(int firstIndex, int secondIndex, Graphics g) {
+    private void connectVertices(int firstIndex, int secondIndex, Graphics g, ProjectionMatrix projectMatrix) {
         PointMatrix first = vertices[firstIndex];
         PointMatrix second = vertices[secondIndex];
+        double focalLength = projectMatrix.getFocalLenght();
 
-        if (first.getZ() > 0 || second.getZ() > 0) {
-            g.drawLine(first.projectX() + 250, first.projectY() + 250,
-                    second.projectX() + 250, second.projectY() + 250);
+        if (first.getZ() <= focalLength && second.getZ() <= focalLength) {
+            return;
         }
+
+        if (first.getZ() <= focalLength || second.getZ() <= focalLength) {
+            double t = (focalLength - first.getZ()) / (second.getZ() - first.getZ());
+            double x = first.getX() + (second.getX() - first.getX()) * t;
+            double y = first.getY() + (second.getY() - first.getY()) * t;
+            if (first.getZ() <= focalLength) {
+                first = new PointMatrix(x, y, focalLength);
+            } else {
+                second = new PointMatrix(x, y, focalLength);
+            }
+        }
+
+        first = first.transform(projectMatrix);
+        second = second.transform(projectMatrix);
+        g.drawLine(first.projectX() + 250, first.projectY() + 250, second.projectX() + 250, second.projectY() + 250);
     }
 
     public void transform(SimpleMatrix matrix) {
-        for (PointMatrix point : vertices) {
-            point.set(matrix.mult(point));
-            point.normalize();
+        for (int i = 0; i < 8; i++) {
+            vertices[i] = vertices[i].transform(matrix);
         }
     }
 
-    public void draw(Graphics g) {
-        connectVertices(LEFT_DOWN_FRONT, LEFT_DOWN_BACK, g);
-        connectVertices(LEFT_DOWN_FRONT, LEFT_UP_FRONT, g);
-        connectVertices(LEFT_DOWN_FRONT, RIGHT_DOWN_FRONT, g);
+    public void draw(Graphics g, ProjectionMatrix matrix) {
+        connectVertices(LEFT_DOWN_FRONT, LEFT_DOWN_BACK, g, matrix);
+        connectVertices(LEFT_DOWN_FRONT, LEFT_UP_FRONT, g, matrix);
+        connectVertices(LEFT_DOWN_FRONT, RIGHT_DOWN_FRONT, g, matrix);
 
-        connectVertices(RIGHT_DOWN_BACK, RIGHT_DOWN_FRONT, g);
-        connectVertices(RIGHT_DOWN_BACK, RIGHT_UP_BACK, g);
-        connectVertices(RIGHT_DOWN_BACK, LEFT_DOWN_BACK, g);
+        connectVertices(RIGHT_DOWN_BACK, RIGHT_DOWN_FRONT, g, matrix);
+        connectVertices(RIGHT_DOWN_BACK, RIGHT_UP_BACK, g, matrix);
+        connectVertices(RIGHT_DOWN_BACK, LEFT_DOWN_BACK, g, matrix);
 
-        connectVertices(LEFT_UP_BACK, LEFT_UP_FRONT, g);
-        connectVertices(LEFT_UP_BACK, LEFT_DOWN_BACK, g);
-        connectVertices(LEFT_UP_BACK, RIGHT_UP_BACK, g);
+        connectVertices(LEFT_UP_BACK, LEFT_UP_FRONT, g, matrix);
+        connectVertices(LEFT_UP_BACK, LEFT_DOWN_BACK, g, matrix);
+        connectVertices(LEFT_UP_BACK, RIGHT_UP_BACK, g, matrix);
 
-        connectVertices(LEFT_UP_FRONT, LEFT_UP_BACK, g);
-        connectVertices(LEFT_UP_FRONT, LEFT_DOWN_FRONT, g);
-        connectVertices(LEFT_UP_FRONT, RIGHT_UP_FRONT, g);
+        connectVertices(LEFT_UP_FRONT, LEFT_UP_BACK, g, matrix);
+        connectVertices(LEFT_UP_FRONT, LEFT_DOWN_FRONT, g, matrix);
+        connectVertices(LEFT_UP_FRONT, RIGHT_UP_FRONT, g, matrix);
 
-        connectVertices(RIGHT_UP_FRONT, RIGHT_UP_BACK, g);
-        connectVertices(RIGHT_UP_FRONT, RIGHT_DOWN_FRONT, g);
-        connectVertices(RIGHT_UP_FRONT, LEFT_UP_FRONT, g);
-    }
-
-    @Override
-    public String toString() {
-        String result = "";
-        for (PointMatrix point : vertices) {
-            result += point + "\n";
-        }
-        return result;
+        connectVertices(RIGHT_UP_FRONT, RIGHT_UP_BACK, g, matrix);
+        connectVertices(RIGHT_UP_FRONT, RIGHT_DOWN_FRONT, g, matrix);
+        connectVertices(RIGHT_UP_FRONT, LEFT_UP_FRONT, g, matrix);
     }
 }

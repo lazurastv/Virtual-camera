@@ -3,17 +3,27 @@ package transformation.model.camera;
 import org.ejml.simple.SimpleMatrix;
 
 public class ProjectionMatrix extends SimpleMatrix {
-    private static final double DEFAULT_FOCAL_LENGTH = 500;
     private static final double DEFAULT_ZOOM = 1.1;
+
+    private double focalLength = 500.0;
 
     public ProjectionMatrix() {
         super(SimpleMatrix.identity(4));
         set(3, 3, 0);
-        set(3, 2, 1 / DEFAULT_FOCAL_LENGTH);
+        update();
     }
 
     private void multiplyFocalLength(double value) {
-        set(3, 2, get(3, 2) * value);
+        focalLength /= value;
+        update();
+    }
+
+    private void update() {
+        set(3, 2, 1 / focalLength);
+    }
+
+    public double getFocalLenght() {
+        return focalLength;
     }
 
     public void transform(ProjectionOps operation) {
