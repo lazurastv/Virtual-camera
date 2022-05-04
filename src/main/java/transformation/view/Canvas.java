@@ -8,8 +8,8 @@ import java.awt.Graphics;
 import java.awt.Dimension;
 
 public class Canvas extends JComponent {
-    private final int WIDTH = 500;
-    private final int HEIGHT = 500;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 800;
 
     private final Camera camera;
 

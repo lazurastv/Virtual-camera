@@ -2,6 +2,8 @@ package transformation.model;
 
 import org.ejml.simple.SimpleMatrix;
 
+import transformation.view.Canvas;
+
 public class PointMatrix extends SimpleMatrix {
     public PointMatrix(double x, double y, double z) {
         super(new double[][] {
@@ -13,11 +15,11 @@ public class PointMatrix extends SimpleMatrix {
     }
 
     public int projectX() {
-        return (int) getX();
+        return (int) getX() + Canvas.WIDTH / 2;
     }
 
     public int projectY() {
-        return (int) getY();
+        return (int) getY() + Canvas.HEIGHT / 2;
     }
 
     public double getX() {

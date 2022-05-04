@@ -61,7 +61,7 @@ public class Rectangle {
 
         first = first.transform(projectMatrix);
         second = second.transform(projectMatrix);
-        g.drawLine(first.projectX() + 250, first.projectY() + 250, second.projectX() + 250, second.projectY() + 250);
+        g.drawLine(first.projectX(), first.projectY(), second.projectX(), second.projectY());
     }
 
     public void transform(SimpleMatrix matrix) {
